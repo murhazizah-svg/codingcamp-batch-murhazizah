@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>My Company</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Our Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <h2>Welcome to Our Company</h2>
+    <p id="welcomeText">Hi, Guest!</p>
+  </section>
+
+  <section class="about">
+    <h2>About the Company</h2>
+    <p>We are a leading company in delivering quality products and services.</p>
+  </section>
+
+  <section class="vision">
+    <h2>Vision & Mission</h2>
+    <p>Our vision is to innovate and inspire. Our mission is to serve with excellence.</p>
+  </section>
+
+  <section class="contact">
+    <h2>Message Us</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+    <div id="formOutput"></div>
+  </section>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>My Company</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Our Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Our Profile</h2>
+    <p>Here you can add detailed information about your company, services, and achievements.</p>
+  </main>
+</body>
+</html>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.banner {
+  background: #f4f4f4;
+  padding: 40px;
+  text-align: center;
+}
+
+.about, .vision, .contact {
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea, button {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
+// Ubah teks welcome sesuai nama input
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const output = document.getElementById("formOutput");
+  const welcomeText = document.getElementById("welcomeText");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || phone === "" || message === "") {
+      alert("All fields are required!");
+      return;
+    }
+
+    // Ganti teks Welcome
+    welcomeText.textContent = `Hi, ${name}!`;
+
+    // Tampilkan hasil form
+    output.innerHTML = `
+      <h3>Form Submitted:</h3>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Message:</strong> ${message}</p>
+    `;
+  });
+});
